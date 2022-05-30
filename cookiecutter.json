@@ -27,7 +27,7 @@
     "_test_matrix_configurator": "no",
     "_test_matrix_separate_coverage": "no",
     "_setup_py_uses_pytest_runner": "no",
-    "_setup_py_uses_setuptools_scm": "no",
+    "_setup_py_uses_setuptools_scm": "yes",
     "_pypi_badge": "no",
     "_pypi_disable_upload": "yes",
     "_allow_tests_inside_package": "no",
