@@ -40,7 +40,7 @@ def exec_in_env():
             except subprocess.CalledProcessError:
                 check_call(["virtualenv", env_path])
         print("Installing `jinja2` into bootstrap environment...")
-        check_call([join(bin_path, "pip"), "install", "jinja2", "tox"{% if cookiecutter.test_matrix_configurator == "yes" %}, "matrix"{% endif %}])
+        check_call([join(bin_path, "pip"), "install", "jinja2", "tox"{% if cookiecutter._test_matrix_configurator == "yes" %}, "matrix"{% endif %}])
     python_executable = join(bin_path, "python")
     if not os.path.exists(python_executable):
         python_executable += '.exe'
@@ -52,7 +52,7 @@ def exec_in_env():
 
 def main():
     import jinja2
-{%- if cookiecutter.test_matrix_configurator == "yes" %}
+{%- if cookiecutter._test_matrix_configurator == "yes" %}
     import matrix
 {%- endif %}
 
@@ -64,7 +64,7 @@ def main():
         lstrip_blocks=True,
         keep_trailing_newline=True,
     )
-{% if cookiecutter.test_matrix_configurator == "yes" %}
+{% if cookiecutter._test_matrix_configurator == "yes" %}
     tox_environments = {}
     for (alias, conf) in matrix.from_file(join(base_path, "setup.cfg")).items():
         deps = conf["dependencies"]

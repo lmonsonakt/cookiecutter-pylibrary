@@ -145,7 +145,7 @@ You will be asked for these fields:
             "python-nameless"
       - Repository name on GitHub (and project's root directory name).
 
-    * - ``package_name``
+    * - ``__package_name``
       - .. code:: python
 
             "nameless"
@@ -215,29 +215,29 @@ You will be asked for these fields:
 
         You should only use this with ``c_extension_support``. If your project produces universal wheels this won't work
         well.
-    * - ``test_matrix_configurator``
+    * - ``_test_matrix_configurator``
       - .. code:: python
 
             "no"
       - Enable the test matrix generator script. If you don't have a huge number of test environments then probably you
         don't need this.
 
-    * - ``test_matrix_separate_coverage``
+    * - ``_test_matrix_separate_coverage``
       - .. code:: python
 
             "no"
       - Enable this to have a separate env for measuring coverage. Indicated if you want to run doctests or collect tests
         from ``src`` with pytest.
 
-        Note that ``test_matrix_separate_coverage == 'no'`` only works if you also have ``test_matrix_configurator == 'no'``.
+        Note that ``_test_matrix_separate_coverage == 'no'`` only works if you also have ``_test_matrix_configurator == 'no'``.
 
-    * - ``setup_py_uses_pytest_runner``
+    * - ``_setup_py_uses_pytest_runner``
       - .. code:: python
 
             "no"
       - Whether to use pytest-runner for python setup.py test.
         Note that this will also add to ``setup_requires`` if a test-runner is needed.
-    * - ``setup_py_uses_setuptools_scm``
+    * - ``_setup_py_uses_setuptools_scm``
       - .. code:: python
 
             "no"
@@ -346,7 +346,7 @@ You will be asked for these fields:
 
             "no"
       - Set to ``"yes"`` if you want to enable doctesting in the `docs` environment. Works best with
-        ``test_matrix_separate_coverage == 'no'``.
+        ``_test_matrix_separate_coverage == 'no'``.
 
         Read more about `doctest support in Sphinx <http://www.sphinx-doc.org/en/stable/ext/doctest.html>`_.
 
@@ -403,7 +403,7 @@ initial bootstrap ``tox.ini``, to get the initial generation going just run::
 
   tox
 
-You can later regenerate ``tox.ini`` and ``.travis.yml`` by running (if you enabled the ``test_matrix_configurator``
+You can later regenerate ``tox.ini`` and ``.travis.yml`` by running (if you enabled the ``_test_matrix_configurator``
 option)::
 
   tox -e bootstrap

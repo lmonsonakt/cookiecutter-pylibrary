@@ -1,5 +1,5 @@
 [paths]
-{%- if cookiecutter.test_matrix_separate_coverage == 'yes' %}
+{%- if cookiecutter._test_matrix_separate_coverage == 'yes' %}
 source = src
 {%- else %}
 source =
@@ -9,7 +9,7 @@ source =
 
 [run]
 branch = true
-{%- if cookiecutter.test_matrix_separate_coverage == 'yes' %}
+{%- if cookiecutter._test_matrix_separate_coverage == 'yes' %}
 source =
     src
     tests
@@ -19,7 +19,7 @@ source =
     tests
 {%- endif %}
 parallel = true
-{%- if cookiecutter.c_extension_support == 'cython' and cookiecutter.test_matrix_separate_coverage == 'no' %}
+{%- if cookiecutter._c_extension_support == 'cython' and cookiecutter._test_matrix_separate_coverage == 'no' %}
 plugins = Cython.Coverage
 {%- endif %}
 

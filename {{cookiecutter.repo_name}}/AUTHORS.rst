@@ -2,4 +2,4 @@
 Authors
 =======
 
-* {{ cookiecutter.full_name }} - {{ cookiecutter.website or cookiecutter.email }}
+* {{ cookiecutter._full_name }} - {{ cookiecutter._website or cookiecutter._email }}

@@ -65,11 +65,11 @@ v1.12 (2016-08-20)
 * Removed all references to Python 2.6 from various config files. Contributed by Lucas Wiman,
   `#48 <https://github.com/ionelmc/cookiecutter-pylibrary/pull/48>`_.
 * Rename ``bin_name`` to ``command_line_interface_bin_name`` for more clarity.
-* Added ``test_matrix_separate_coverage`` option with default to ``"no"``. Previously the template generated two
-  environment flavors in ``tox.ini``: ``cover`` and ``nocov`` (what ``test_matrix_separate_coverage == "yes"`` would
+* Added ``_test_matrix_separate_coverage`` option with default to ``"no"``. Previously the template generated two
+  environment flavors in ``tox.ini``: ``cover`` and ``nocov`` (what ``_test_matrix_separate_coverage == "yes"`` would
   generate now).
 * Added ``sphinx_doctest`` option to complement the lack of doctest support when
-  ``test_matrix_separate_coverage == "no"`` is used.
+  ``_test_matrix_separate_coverage == "no"`` is used.
 * Added ``isort`` checks in ``tox.ini``.
   Contributed by Fábio C. Barrionuevo da Luz in `#50 <https://github.com/ionelmc/cookiecutter-pylibrary/pull/50>`_.
 * Removed ``"extension-coveralls"`` if it's not used.
@@ -99,9 +99,9 @@ v1.11 (2016-01-05)
   Contributed by Christer van der Meeren, `#37 <https://github.com/ionelmc/cookiecutter-pylibrary/pull/37>`_.
 * Enable the ``extlinks`` extension from Sphinx.
 * Added ``bin_name`` options and warnings when ``bin_name`` could be problematic (eg: it has ``.py`` extension and same
-  name as the ``package_name``).
+  name as the ``__package_name``).
 * Added Python 3.5 to classifiers (``setup.py``).
-* Renamed the tox environment names to be more similar with the tox defaults (if ``test_matrix_generator`` is ``"no"``).
+* Renamed the tox environment names to be more similar with the tox defaults (if ``_test_matrix_generator`` is ``"no"``).
 * Added few comments and tweaks in ``setup.py`` to make it easy to switch to Cython extensions.
 * Various other small fixups.
 
@@ -144,7 +144,7 @@ v1.8 (2015-07-03)
 -----------------
 
 * Remove the 64bit environment from the basic AppVeyor test matrix.
-* Change the ``tox.ini`` template (``test_matrix_configurator=yes``) to allow overriding the
+* Change the ``tox.ini`` template (``_test_matrix_configurator=yes``) to allow overriding the
   interpreter (so that 64bit interpreter actually gets used on AppVeyor).
 
 v1.7.1 (2015-07-03)
@@ -198,7 +198,7 @@ v1.2 (2015-04-11)
 
   If you run cookiecutter on Python 2 you'll get unicode escapes ("\uXXXX") and on Python 3 you'll get the pretty
   gliphs.
-* Fixed the ``bootstrap.py`` script (that's used for the ``test_matrix_configurator`` mode) to work from any current
+* Fixed the ``bootstrap.py`` script (that's used for the ``_test_matrix_configurator`` mode) to work from any current
   working directory.
 * Included the branch name in the AppVeyor build number.
 * Make the CLI optional and add support for using `click`.

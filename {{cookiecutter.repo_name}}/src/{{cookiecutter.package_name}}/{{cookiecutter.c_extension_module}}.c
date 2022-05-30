@@ -1,5 +1,5 @@
-{%- if cookiecutter.c_extension_support == 'cffi' %}
-char* {{ cookiecutter.c_extension_function }}(int argc, char *argv[]) {
+{%- if cookiecutter._c_extension_support == 'cffi' %}
+char* {{ cookiecutter._c_extension_function }}(int argc, char *argv[]) {
     if (argc) {
         int len, i,
             max = 0,
@@ -19,7 +19,7 @@ char* {{ cookiecutter.c_extension_function }}(int argc, char *argv[]) {
 {% else -%}
 #include "Python.h"
 
-static PyObject* {{ cookiecutter.c_extension_function }}(PyObject *self, PyObject *value) {
+static PyObject* {{ cookiecutter._c_extension_function }}(PyObject *self, PyObject *value) {
     PyObject *module;
     PyObject *module_dict;
     PyObject *len;
@@ -27,13 +27,13 @@ static PyObject* {{ cookiecutter.c_extension_function }}(PyObject *self, PyObjec
     PyObject *args;
     PyObject *kwargs;
     PyObject *result;
-{% if cookiecutter.legacy_python == "yes" %}
+{% if cookiecutter._legacy_python == "yes" %}
 #if PY_MAJOR_VERSION < 3
     module = PyImport_ImportModule("__builtin__");
 #else
 {%- endif %}
     module = PyImport_ImportModule("builtins");
-{%- if cookiecutter.legacy_python == "yes" %}
+{%- if cookiecutter._legacy_python == "yes" %}
 #endif
 {% endif %}
     if (!module)
@@ -74,14 +74,14 @@ static PyObject* {{ cookiecutter.c_extension_function }}(PyObject *self, PyObjec
     return result;
 }
 
-PyDoc_STRVAR({{ cookiecutter.c_extension_function }}_doc, "Docstring for {{ cookiecutter.c_extension_function }} function.");
+PyDoc_STRVAR({{ cookiecutter._c_extension_function }}_doc, "Docstring for {{ cookiecutter._c_extension_function }} function.");
 
 static struct PyMethodDef module_functions[] = {
-    {"{{ cookiecutter.c_extension_function }}", {{ cookiecutter.c_extension_function }}, METH_O, {{ cookiecutter.c_extension_function }}_doc},
+    {"{{ cookiecutter._c_extension_function }}", {{ cookiecutter._c_extension_function }}, METH_O, {{ cookiecutter._c_extension_function }}_doc},
     {NULL, NULL}
 };
 
-{%- if cookiecutter.legacy_python == "yes" %}
+{%- if cookiecutter._legacy_python == "yes" %}
 #if PY_MAJOR_VERSION >= 3
 {%- endif %}
 static struct PyModuleDef moduledef = {
@@ -95,18 +95,18 @@ static struct PyModuleDef moduledef = {
     NULL,             /* m_clear */
     NULL,             /* m_free */
 };
-{%- if cookiecutter.legacy_python == "yes" %}
+{%- if cookiecutter._legacy_python == "yes" %}
 #endif
 {%- endif %}
 
 static PyObject* moduleinit(void) {
     PyObject *module;
 
-{% if cookiecutter.legacy_python == "yes" -%}
+{% if cookiecutter._legacy_python == "yes" -%}
 #if PY_MAJOR_VERSION >= 3
 {%- endif %}
     module = PyModule_Create(&moduledef);
-{% if cookiecutter.legacy_python == "yes" -%}
+{% if cookiecutter._legacy_python == "yes" -%}
 #else
     module = Py_InitModule3("{{ cookiecutter.package_name }}.{{ cookiecutter.c_extension_module }}", module_functions, NULL);
 #endif
@@ -118,7 +118,7 @@ static PyObject* moduleinit(void) {
     return module;
 }
 
-{% if cookiecutter.legacy_python == "yes" -%}
+{% if cookiecutter._legacy_python == "yes" -%}
 #if PY_MAJOR_VERSION < 3
 PyMODINIT_FUNC init{{ cookiecutter.c_extension_module }}(void) {
     moduleinit();
@@ -128,7 +128,7 @@ PyMODINIT_FUNC init{{ cookiecutter.c_extension_module }}(void) {
 PyMODINIT_FUNC PyInit_{{ cookiecutter.c_extension_module }}(void) {
     return moduleinit();
 }
-{%- if cookiecutter.legacy_python == "yes" %}
+{%- if cookiecutter._legacy_python == "yes" %}
 #endif
 {%- endif %}
 {% endif %}

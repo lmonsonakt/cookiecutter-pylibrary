@@ -88,5 +88,5 @@ If you want to add a context option, you need to:
   * Run ``./ci/bootstrap.py`` to regenerate the test ``.cookiecutterrc`` files.
 * Change the `bare tox.ini <https://github.com/ionelmc/cookiecutter-pylibrary/blob/master/%7B%7Bcookiecutter.repo_name%7D%7D/tox.ini>`_ to have an conditional for it.
 * Change the `template tox.ini <https://github.com/ionelmc/cookiecutter-pylibrary/blob/master/%7B%7Bcookiecutter.repo_name%7D%7D/ci/templates/tox.ini>`_
-  (don't forget the raw sections) to have an conditional for it  (this ``tox.ini`` file is used with the ``test_matrix_configurator=yes`` option)
+  (don't forget the raw sections) to have an conditional for it  (this ``tox.ini`` file is used with the ``_test_matrix_configurator=yes`` option)
 

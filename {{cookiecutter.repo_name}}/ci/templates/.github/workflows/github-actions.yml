@@ -32,15 +32,15 @@ jobs:
 {% set toxpython %}python{{ prefix[2] }}.{{ prefix[3:] }}{% endset %}
 {% endif %}
 {%- endraw %}
-{%- if cookiecutter.c_extension_support == 'no' %}
+{%- if cookiecutter._c_extension_support == 'no' %}
 {%- raw %}
 {% for os, python_arch in [
     ['ubuntu', 'x64'],
 {%- endraw %}
-{%- if cookiecutter.github_actions_windows == 'yes' %}
+{%- if cookiecutter._github_actions_windows == 'yes' %}
     ['windows', 'x64'],
 {%- endif %}
-{%- if cookiecutter.github_actions_osx == 'yes' %}
+{%- if cookiecutter._github_actions_osx == 'yes' %}
     ['macos', 'x64'],
 {%- endif %}
 {%- raw %}
@@ -102,12 +102,12 @@ jobs:
 {%- endraw %}
     - name: install dependencies
       run: |
-        python -mpip install --progress-bar=off{% if cookiecutter.c_extension_support != 'no' %} cibuildwheel{% endif %} -r ci/requirements.txt
+        python -mpip install --progress-bar=off{% if cookiecutter._c_extension_support != 'no' %} cibuildwheel{% endif %} -r ci/requirements.txt
         virtualenv --version
         pip --version
         tox --version
         pip list --format=freeze
-{%- if cookiecutter.c_extension_support == 'no' %}
+{%- if cookiecutter._c_extension_support == 'no' %}
 {%- raw %}
     - name: test
       env:
