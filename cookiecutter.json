@@ -42,7 +42,7 @@
     "_codacy" : "no",
     "_codacy_projectid" : "",
     "_codeclimate" : "no",
-    "_sphinx_docs": "yes",
+    "_sphinx_docs": "no",
     "_sphinx_theme": "sphinx-rtd-theme",
     "_sphinx_doctest": "no",
     "_sphinx_docs_hosting": "https://aktify.com/",
