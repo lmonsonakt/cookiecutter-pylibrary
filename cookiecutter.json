@@ -36,6 +36,7 @@
     "_pre_commit_formatter": "black",
     "_command_line_interface": "click",
     "command_line_interface_bin_name": "{{ cookiecutter.project_name|lower|replace(' ','-') }}",
+    "use_conda_with_tox": ["yes", "no"],
     "_coveralls": "no",
     "_codecov": "no",
     "_scrutinizer": "no",
